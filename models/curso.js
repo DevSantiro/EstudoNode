@@ -2,9 +2,9 @@ const conexao = require('../infraestrutura/conexao')
 const moment  = require('moment')
 class Curso {
   adiciona(curso){
-    const dataCriacao = moment().format('YYYY-MM-DD HH:MM:SS')
-    const data = moment(curso.dtcadastro, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS')
-    const cursoDatado = {...curso, dataCriacao, data}
+    const dtcadastro = moment().format('YYYY-MM-DD HH:MM:SS')
+    const dtconclusao = moment(curso.dtconclusao, 'DD/MM/YYYY HH:MM:SS').format('YYYY-MM-DD HH:MM:SS')
+    const cursoDatado = {...curso, dtconclusao, dtcadastro}
     const sql = 'INSERT INTO cursos SET ?';
     
     conexao.query(sql, cursoDatado, (erro, resultados) => {
